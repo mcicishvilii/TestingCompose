@@ -14,11 +14,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
                 AppNavigation(
                     navController = rememberNavController(),
                 )
-            }
         }
     }
 }

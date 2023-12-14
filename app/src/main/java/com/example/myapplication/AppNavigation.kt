@@ -15,7 +15,7 @@ internal fun AppNavigation(
     DestinationsNavHost(
         modifier = Modifier,
         navController = navController,
-        navGraph = NavGraphsCustom.app,
+        navGraph = NavGraphs.root,
         dependenciesContainerBuilder = {
             dependency(currentNavigator())
         }

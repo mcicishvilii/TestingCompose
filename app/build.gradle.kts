@@ -68,11 +68,6 @@ android {
     kapt {
         correctErrorTypes = true
     }
-
-    ksp {
-        arg("compose-destinations.mode", "destinations")
-        arg("compose-destinations.moduleName", "app")
-    }
 }
 
 dependencies {
@@ -80,6 +75,7 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
     implementation(project(":test_module"))
+    implementation(project(":navigation"))
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     kapt("androidx.hilt:hilt-compiler:1.1.0")
 

@@ -1,24 +1,32 @@
 package com.example.myapplication
 
-import com.example.myapplication.ui.destinations.MainScreenDestination
-import com.example.test_module.destinations.SecondScreenDestination
+import com.example.navigation.destinations.NavigationScreenDestination
+import com.example.test_module.destinations.TestScreenDestination
 import com.ramcosta.composedestinations.spec.DestinationSpec
 import com.ramcosta.composedestinations.spec.NavGraphSpec
 
-object NavGraphsCustom {
+object NavGraphs {
 
     val test = object : NavGraphSpec {
-        override val route = "second_screenasdasd"
-        override val startRoute = SecondScreenDestination
+        override val route = "test"
+        override val startRoute = TestScreenDestination
         override val destinationsByRoute =
-            listOf<DestinationSpec<*>>(SecondScreenDestination)
+            listOf<DestinationSpec<*>>(TestScreenDestination)
                 .associateBy { it.route }
     }
 
-    val app = object : NavGraphSpec {
-        override val route = "main_screen"
-        override val startRoute = MainScreenDestination
+    val navigation = object : NavGraphSpec {
+        override val route = "navigation"
+        override val startRoute = NavigationScreenDestination
+        override val destinationsByRoute =
+            listOf<DestinationSpec<*>>(NavigationScreenDestination)
+                .associateBy { it.route }
+    }
+
+    val root = object : NavGraphSpec {
+        override val route = "root"
+        override val startRoute = navigation
         override val destinationsByRoute = emptyMap<String, DestinationSpec<*>>()
-        override val nestedNavGraphs = listOf(test)
+        override val nestedNavGraphs = listOf(test, navigation)
     }
 }

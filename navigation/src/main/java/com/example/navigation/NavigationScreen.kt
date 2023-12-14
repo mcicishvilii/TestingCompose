@@ -3,18 +3,20 @@ package com.example.navigation
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import com.example.test_module.destinations.SecondScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Destination
 @Composable
-fun NavigationScreen(
-    navigator: DestinationsNavigator
+internal fun NavigationScreen(
+    navigator: HomeScreenNavigator
 ) {
     Button(onClick = {
-        navigator.navigate(SecondScreenDestination)
+        navigator.navigateToTest()
     }) {
         Text(text = "Main Screen")
     }
+}
+
+interface HomeScreenNavigator {
+    fun navigateToTest()
 }
