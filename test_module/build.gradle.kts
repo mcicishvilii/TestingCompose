@@ -38,6 +38,13 @@ android {
         arg("compose-destinations.mode", "destinations")
         arg("compose-destinations.moduleName", "test_module")
     }
+
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.4"
+    }
 }
 
 
