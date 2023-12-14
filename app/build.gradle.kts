@@ -3,21 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
-    id("com.google.devtools.ksp") version "1.8.10-1.0.9"
 }
-
-
-kotlin{
-    sourceSets{
-        debug {
-            kotlin.srcDir("build/generated/ksp/debug/kotlin")
-        }
-        release {
-            kotlin.srcDir("build/generated/ksp/release/kotlin")
-        }
-    }
-}
-
 
 android {
     namespace = "com.example.myapplication"
@@ -57,7 +43,8 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.4"
+        kotlinCompilerExtensionVersion = "1.5.4"
+
     }
     packaging {
         resources {
@@ -71,6 +58,13 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":test_module"))
+    implementation(project(":navigation"))
+    implementation(project(":core"))
+
+    val nav_version = "2.7.6"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
 
     implementation("com.google.dagger:hilt-android:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
@@ -88,10 +82,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
 
-
-    implementation ("io.github.raamcosta.compose-destinations:core:1.8.42-beta")
-    ksp ("io.github.raamcosta.compose-destinations:ksp:1.8.42-beta")
-
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -99,7 +89,4 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-
-
-
 }

@@ -17,3 +17,4 @@ rootProject.name = "My Application"
 include(":app")
 include(":test_module")
 include(":navigation")
+include(":core")

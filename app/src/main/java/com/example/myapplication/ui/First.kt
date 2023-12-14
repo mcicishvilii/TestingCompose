@@ -1,4 +1,4 @@
-package com.example.navigation
+package com.example.myapplication.ui
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -7,10 +7,10 @@ import androidx.navigation.NavController
 import com.example.core.NavigationItem
 
 @Composable
-fun NavigationScreen(navController: NavController) {
+fun First(navController: NavController) {
     Button(onClick = {
-        navController.navigate(NavigationItem.TestModule.route)
+        navController.navigate(NavigationItem.Second.route)
     }) {
-        Text(text = "to test Screen")
+        Text(text = "tosecond Screen")
     }
 }

@@ -3,18 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
-    id("com.google.devtools.ksp") version "1.8.10-1.0.9"
-}
-
-kotlin{
-    sourceSets{
-        debug {
-            kotlin.srcDir("build/generated/ksp/debug/kotlin")
-        }
-        release {
-            kotlin.srcDir("build/generated/ksp/release/kotlin")
-        }
-    }
 }
 
 android {
@@ -45,20 +33,23 @@ android {
         jvmTarget = "17"
     }
 
-    ksp {
-        arg("compose-destinations.mode", "destinations")
-        arg("compose-destinations.moduleName", "navigation")
+    buildFeatures {
+        compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.4"
 
-
+    }
 }
 
 dependencies {
-
+    implementation("androidx.navigation:navigation-compose:2.7.6")
     implementation("com.google.dagger:hilt-android:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     kapt("androidx.hilt:hilt-compiler:1.1.0")
+
+    implementation(project(":core"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -68,11 +59,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-
-
-    implementation ("io.github.raamcosta.compose-destinations:core:1.9.42-beta")
-    implementation(project(":test_module"))
-    ksp ("io.github.raamcosta.compose-destinations:ksp:1.9.42-beta")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
