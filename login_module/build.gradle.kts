@@ -53,6 +53,8 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
     implementation(project(":test_module"))
     implementation(project(":di"))
+    implementation(project(":test_module"))
+    implementation(project(":test_module"))
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     kapt("androidx.hilt:hilt-compiler:1.1.0")
 

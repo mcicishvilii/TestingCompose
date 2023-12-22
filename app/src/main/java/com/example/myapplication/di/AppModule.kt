@@ -17,12 +17,6 @@ object RegistrationNavigatorModule {
         return RegistrationNavigatorImpl(navController)
     }
 
-//    @Singleton
-//    @Provides
-//    fun provideLoginNavigator(navController: NavControllerHolder): LoginNavigator {
-//        return LoginNavigatorImpl(navController)
-//    }
-
     @Singleton
     @Provides
     fun provideNavControllerHolder() = NavControllerHolder()
