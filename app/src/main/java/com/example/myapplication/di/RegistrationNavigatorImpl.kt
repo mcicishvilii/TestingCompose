@@ -11,7 +11,7 @@ class RegistrationNavigatorImpl @Inject constructor(
     private val navControllerHolder: NavControllerHolder
 ):RegistrationNavigator {
     override fun navigateToTest() {
-        navControllerHolder.navController?.navigate(TestScreenDestination)
+//        navControllerHolder.navController?.navigate(TestScreenDestination)
     }
 
     override fun navigateToLogin() {

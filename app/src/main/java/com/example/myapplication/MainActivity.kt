@@ -4,9 +4,20 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.navigation.compose.rememberNavController
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import com.example.di.NavControllerHolder
 import com.example.test_module.navigation.RegistrationNavigator
+import com.example.test_module.screens.oto.TestScreen
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -21,9 +32,23 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val navController = rememberNavController()
-            navControllerHolder.navController = navController
-            AppNavigation(navController, registrationNavigator)
+//            val navController = rememberNavController()
+//            navControllerHolder.navController = navController
+//            AppNavigation(navController, registrationNavigator)
+            Column (
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                var selectedIcon by remember { mutableStateOf(0) }
+
+                TestScreen(selectedIcon = selectedIcon)
+
+                Button(onClick = { if (selectedIcon < 2) selectedIcon++ }) {
+                    Text("Next")
+                }
+            }
+
         }
     }
 }
