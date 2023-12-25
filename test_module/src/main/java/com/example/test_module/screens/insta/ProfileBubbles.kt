@@ -29,7 +29,7 @@ fun ProfileBubbles() {
             ) {
                 Image(
                     modifier = Modifier
-                        .size(130.dp)
+                        .size(80.dp)
                         .padding(10.dp)
                         .clip(RoundedCornerShape(100.dp))
                         .background(Color.Blue),
@@ -62,14 +62,14 @@ data class Profiles(
 )
 
 val profiles = mutableListOf(
-    Profiles(1, "user1", R.drawable.baseline_favorite_border_24),
-    Profiles(2, "user2", R.drawable.baseline_favorite_border_24),
-    Profiles(3, "user3", R.drawable.baseline_favorite_border_24),
-    Profiles(4, "user4", R.drawable.baseline_favorite_border_24),
-    Profiles(5, "user5", R.drawable.baseline_favorite_border_24),
-    Profiles(6, "user6", R.drawable.baseline_favorite_border_24),
-    Profiles(7, "user7", R.drawable.baseline_favorite_border_24),
-    Profiles(8, "user8", R.drawable.baseline_favorite_border_24),
-    Profiles(9, "user9", R.drawable.baseline_favorite_border_24),
-    Profiles(10, "user10", R.drawable.baseline_favorite_border_24),
+    Profiles(1, "user1", R.drawable.girl),
+    Profiles(2, "user2", R.drawable.girl),
+    Profiles(3, "user3", R.drawable.girl),
+    Profiles(4, "user4", R.drawable.girl),
+    Profiles(5, "user5", R.drawable.girl),
+    Profiles(6, "user6", R.drawable.girl),
+    Profiles(7, "user7", R.drawable.girl),
+    Profiles(8, "user8", R.drawable.girl),
+    Profiles(9, "user9", R.drawable.girl),
+    Profiles(10, "user10", R.drawable.girl),
 )
