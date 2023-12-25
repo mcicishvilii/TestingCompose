@@ -69,10 +69,13 @@ fun MainContent() {
                                     color = Color.White,
                                     fontWeight = FontWeight.W900
                                 )
-                                Icon(
-                                    painter = painterResource(id = R.drawable.baseline_verified_24),
-                                    contentDescription = "verified"
-                                )
+                                if(data.isVerified){
+                                    Icon(
+                                        tint = Color.White,
+                                        painter = painterResource(id = R.drawable.baseline_verified_24),
+                                        contentDescription = "verified"
+                                    )
+                                }
                             }
 
                             Text(
