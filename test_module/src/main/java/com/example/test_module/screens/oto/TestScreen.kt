@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,7 +38,7 @@ fun TestScreen(selectedIcon: Int,dotsHeight: Dp) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
-//            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically
         ) {
             DotIcon(selected = selectedIcon >= 0, dotsHeight = dotsHeight)
             DotSpacer(dotsHeight = dotsHeight)
@@ -53,7 +54,7 @@ fun DotSpacer(dotsHeight: Dp) {
     Spacer(
         modifier = Modifier
             .height(dotsHeight)
-            .width(120.dp)
+            .width(dotsHeight)
             .drawWithContent {
                 drawContent()
                 val dotRadius = 2.dp.toPx()
@@ -72,11 +73,17 @@ fun DotSpacer(dotsHeight: Dp) {
 
 @Composable
 fun DotIcon(selected: Boolean, dotsHeight: Dp) {
-    Icon(
-        imageVector = Icons.Default.AccountCircle,
-        contentDescription = null,
-        tint = if (selected) Color.Blue else Color.Gray,
-        modifier = Modifier
-            .size(dotsHeight)
-    )
+    Column (
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Icon(
+            imageVector = Icons.Default.AccountCircle,
+            contentDescription = null,
+            tint = if (selected) Color.Blue else Color.Gray,
+            modifier = Modifier
+                .size(dotsHeight)
+        )
+        Text("something")
+    }
+
 }
