@@ -26,8 +26,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 
 @Destination
 @Composable
-fun TestScreen(selectedIcon: Int) {
-    val dotsHeight = 40.dp
+fun TestScreen(selectedIcon: Int,dotsHeight: Dp) {
     Column(
         modifier = Modifier
             .fillMaxWidth()

@@ -15,7 +15,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.di.NavControllerHolder
+import com.example.myapplication.ui.NavigationScreen
 import com.example.test_module.navigation.RegistrationNavigator
 import com.example.test_module.screens.oto.TestScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,6 +27,7 @@ import javax.inject.Inject
 class MainActivity : ComponentActivity() {
     @Inject
     lateinit var navControllerHolder: NavControllerHolder
+
     @Inject
     lateinit var registrationNavigator: RegistrationNavigator
 
@@ -35,18 +38,12 @@ class MainActivity : ComponentActivity() {
 //            val navController = rememberNavController()
 //            navControllerHolder.navController = navController
 //            AppNavigation(navController, registrationNavigator)
-            Column (
+            Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
-                var selectedIcon by remember { mutableStateOf(0) }
-
-                TestScreen(selectedIcon = selectedIcon)
-
-                Button(onClick = { if (selectedIcon < 2) selectedIcon++ }) {
-                    Text("Next")
-                }
+                NavigationScreen()
             }
 
         }
