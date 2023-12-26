@@ -47,6 +47,7 @@ fun TestScreen(selectedIcon: Int,dotsHeight: Dp) {
             DotIcon(selected = selectedIcon >= 2, dotsHeight = dotsHeight)
         }
     }
+
 }
 
 
