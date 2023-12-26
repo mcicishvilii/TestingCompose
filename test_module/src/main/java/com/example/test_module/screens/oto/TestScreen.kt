@@ -41,16 +41,17 @@ fun TestScreen(selectedIcon: Int,dotsHeight: Dp) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             DotIcon(selected = selectedIcon >= 0, dotsHeight = dotsHeight)
-            DotSpacer(dotsHeight = dotsHeight)
+            DotSpacer(selected = selectedIcon >= 1, dotsHeight = dotsHeight)
             DotIcon(selected = selectedIcon >= 1, dotsHeight = dotsHeight)
-            DotSpacer(dotsHeight = dotsHeight)
+            DotSpacer(selected = selectedIcon >= 2, dotsHeight = dotsHeight)
             DotIcon(selected = selectedIcon >= 2, dotsHeight = dotsHeight)
         }
     }
 }
 
+
 @Composable
-fun DotSpacer(dotsHeight: Dp) {
+fun DotSpacer(selected: Boolean, dotsHeight: Dp) {
     Spacer(
         modifier = Modifier
             .height(dotsHeight)
@@ -60,9 +61,10 @@ fun DotSpacer(dotsHeight: Dp) {
                 val dotRadius = 2.dp.toPx()
                 val dotDiameter = dotRadius * 2
                 val dotCount = size.width / dotDiameter
+                val color = if (selected) Color.Blue else Color.Gray
                 for (i in 0 until dotCount.toInt()) {
                     drawCircle(
-                        color = Color.Gray,
+                        color = color,
                         radius = dotRadius,
                         center = Offset(x = i * dotDiameter + dotRadius, y = size.height / 2)
                     )
@@ -83,7 +85,6 @@ fun DotIcon(selected: Boolean, dotsHeight: Dp) {
             modifier = Modifier
                 .size(dotsHeight)
         )
-        Text("something")
+        Text("something", color = if (selected) Color.Blue else Color.Gray)
     }
-
 }
