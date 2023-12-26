@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.Icon
@@ -26,7 +27,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 @Destination
 @Composable
 fun TestScreen(selectedIcon: Int) {
-    val iconSize = 80.dp
+    val dotsHeight = 40.dp
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -37,22 +38,23 @@ fun TestScreen(selectedIcon: Int) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+//            verticalAlignment = Alignment.CenterVertically
         ) {
-            DotIcon(selected = selectedIcon >= 0)
-            DotSpacer(iconSize = iconSize)
-            DotIcon(selected = selectedIcon >= 1)
-            DotSpacer(iconSize = iconSize)
-            DotIcon(selected = selectedIcon >= 2)
+            DotIcon(selected = selectedIcon >= 0, dotsHeight = dotsHeight)
+            DotSpacer(dotsHeight = dotsHeight)
+            DotIcon(selected = selectedIcon >= 1, dotsHeight = dotsHeight)
+            DotSpacer(dotsHeight = dotsHeight)
+            DotIcon(selected = selectedIcon >= 2, dotsHeight = dotsHeight)
         }
     }
 }
 
 @Composable
-fun DotSpacer(iconSize: Dp) {
+fun DotSpacer(dotsHeight: Dp) {
     Spacer(
         modifier = Modifier
-            .size(iconSize)
+            .height(dotsHeight)
+            .width(120.dp)
             .drawWithContent {
                 drawContent()
                 val dotRadius = 2.dp.toPx()
@@ -70,12 +72,12 @@ fun DotSpacer(iconSize: Dp) {
 }
 
 @Composable
-fun DotIcon(selected: Boolean) {
+fun DotIcon(selected: Boolean, dotsHeight: Dp) {
     Icon(
         imageVector = Icons.Default.AccountCircle,
         contentDescription = null,
         tint = if (selected) Color.Blue else Color.Gray,
         modifier = Modifier
-            .size(70.dp)
+            .size(dotsHeight)
     )
 }
