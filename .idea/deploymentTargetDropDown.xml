@@ -5,6 +5,18 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="module_phone_tablet">
+        <State />
+      </entry>
+      <entry key="phone_tablet">
+        <State />
+      </entry>
+      <entry key="phone_tablet.api">
+        <State />
+      </entry>
+      <entry key="phone_tablet.impl">
+        <State />
+      </entry>
     </value>
   </component>
 </project>

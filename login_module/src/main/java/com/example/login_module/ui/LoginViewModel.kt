@@ -10,6 +10,4 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     var navControllerHolder: NavControllerHolder,
     var registrationNavigator: RegistrationNavigator
-) : ViewModel() {
-
-}
+) : ViewModel()

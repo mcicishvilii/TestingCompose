@@ -37,7 +37,7 @@ fun MainContent() {
         content = {
             items(mainContentData) { data ->
                 Column {
-                    Box() {
+                    Box {
                         Image(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -136,7 +136,7 @@ fun MainContent() {
                         text = "${data.likes} likes",
                         modifier = Modifier.padding(horizontal = 10.dp)
                     )
-                    Row() {
+                    Row {
                         Text(
                             modifier = Modifier.padding(start = 10.dp),
                             fontWeight = FontWeight.W900,

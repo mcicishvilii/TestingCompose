@@ -19,8 +19,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.test_module.R
 import com.ramcosta.composedestinations.annotation.Destination
 
 @Destination
@@ -35,55 +37,65 @@ fun TestScreen(selectedIcon: Int,dotsHeight: Dp) {
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            DotIcon(selected = selectedIcon >= 0, dotsHeight = dotsHeight)
-            DotSpacer(selected = selectedIcon >= 1, dotsHeight = dotsHeight)
-            DotIcon(selected = selectedIcon >= 1, dotsHeight = dotsHeight)
-            DotSpacer(selected = selectedIcon >= 2, dotsHeight = dotsHeight)
-            DotIcon(selected = selectedIcon >= 2, dotsHeight = dotsHeight)
+            DotIcon(selected = selectedIcon >= 0, dotsHeight = dotsHeight, iconType = 1)
+            DashSpacer(selected = selectedIcon >= 1, dotsHeight = dotsHeight)
+            DashSpacer(selected = selectedIcon >= 1, dotsHeight = dotsHeight)
+            DotIcon(selected = selectedIcon >= 1, dotsHeight = dotsHeight, iconType = 2)
+            DashSpacer(selected = selectedIcon >= 2, dotsHeight = dotsHeight)
+            DashSpacer(selected = selectedIcon >= 2, dotsHeight = dotsHeight)
+            DotIcon(selected = selectedIcon >= 2, dotsHeight = dotsHeight, iconType = 3)
         }
     }
-
 }
 
 
 @Composable
-fun DotSpacer(selected: Boolean, dotsHeight: Dp) {
+fun DashSpacer(selected: Boolean, dotsHeight: Dp) {
     Spacer(
         modifier = Modifier
             .height(dotsHeight)
             .width(dotsHeight)
             .drawWithContent {
                 drawContent()
-                val dotRadius = 2.dp.toPx()
-                val dotDiameter = dotRadius * 2
-                val dotCount = size.width / dotDiameter
+                val dashLength = 2.5.dp.toPx()
+                val spaceLength = 1.dp.toPx()
                 val color = if (selected) Color.Blue else Color.Gray
-                for (i in 0 until dotCount.toInt()) {
-                    drawCircle(
+                val totalLength = size.width
+                var currentLength = 0f
+                while (currentLength < totalLength) {
+                    drawLine(
                         color = color,
-                        radius = dotRadius,
-                        center = Offset(x = i * dotDiameter + dotRadius, y = size.height / 2)
+                        start = Offset(x = currentLength, y = size.height / 2),
+                        end = Offset(x = minOf(currentLength + dashLength, totalLength), y = size.height / 2),
+                        strokeWidth = 2.dp.toPx()
                     )
+                    currentLength += dashLength + spaceLength
                 }
             }
     )
 }
 
+
 @Composable
-fun DotIcon(selected: Boolean, dotsHeight: Dp) {
+fun DotIcon(selected: Boolean, dotsHeight: Dp, iconType: Int) {
     Column (
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        val imageVector = when(iconType) {
+            1 -> R.drawable.first_step
+            2 -> R.drawable.second_step
+            3 -> R.drawable.third_step
+            else -> R.drawable.first_step
+        }
         Icon(
-            imageVector = Icons.Default.AccountCircle,
+            painterResource(id = imageVector),
             contentDescription = null,
             tint = if (selected) Color.Blue else Color.Gray,
             modifier = Modifier
                 .size(dotsHeight)
         )
-        Text("something", color = if (selected) Color.Blue else Color.Gray)
     }
 }

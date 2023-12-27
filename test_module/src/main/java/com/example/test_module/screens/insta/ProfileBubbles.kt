@@ -34,7 +34,7 @@ fun ProfileBubbles() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 if (index == 0) {
-                    Box() {
+                    Box {
                         Image(
                             modifier = Modifier
                                 .size(80.dp)

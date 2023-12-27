@@ -18,6 +18,7 @@ import com.example.test_module.navigation.RegistrationNavigator
 import com.example.test_module.screens.insta.Header
 import com.example.test_module.screens.insta.MainContent
 import com.example.test_module.screens.insta.ProfileBubbles
+import com.example.test_module.screens.oto.RegisterHospitalScreen
 import com.example.test_module.screens.oto.TestScreen
 import com.example.test_module.vm.RegistrationViewModel
 import com.ramcosta.composedestinations.annotation.Destination
@@ -30,16 +31,12 @@ internal fun NavigationScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        var selectedIcon by remember { mutableStateOf(0) }
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
+        RegisterHospitalScreen()
 
-            ) {
-            TestScreen(selectedIcon = selectedIcon, 60.dp)
-        }
-        Button(onClick = { if (selectedIcon < 2) selectedIcon++ }) {
-            Text("Next")
-        }
+
+//        Button(onClick = { /* Handle continue button click */ }) {
+//            Text(text = "Continue")
+//        }
     }
 }
 
